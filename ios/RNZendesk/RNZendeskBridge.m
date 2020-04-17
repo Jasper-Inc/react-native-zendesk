@@ -18,7 +18,8 @@ RCT_EXTERN_METHOD(initialize:(NSDictionary *)config);
 // MARK: - Indentification
 
 RCT_EXTERN_METHOD(identifyJWT:(NSString *)token);
-RCT_EXTERN_METHOD(identifyAnonymous:(NSString *)name email:(NSString *)email);
+// RCT_EXTERN_METHOD(identifyAnonymous:(NSString *)name email:(NSString *)email);
+RCT_EXTERN_METHOD(identifyAnonymous:(NSDictionary *)identity);
 
 // MARK: - UI Methods
 

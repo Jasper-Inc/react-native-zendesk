@@ -8,7 +8,7 @@
 
 import UIKit
 import Foundation
-import ZendeskSDK
+import SupportSDK
 import ZendeskCoreSDK
 import CommonUISDK
 
@@ -52,10 +52,20 @@ class RNZendesk: RCTEventEmitter {
         Zendesk.instance?.setIdentity(identity)
     }
     
-    @objc(identifyAnonymous:email:)
-    func identifyAnonymous(name: String?, email: String?) {
-        let identity = Identity.createAnonymous(name: name, email: email)
-        Zendesk.instance?.setIdentity(identity)
+    // @objc(identifyAnonymous:email:)
+    // func identifyAnonymous(name: String?, email: String?) {
+    //     let identity = Identity.createAnonymous(name: name, email: email)
+    //     Zendesk.instance?.setIdentity(identity)
+    // }
+
+    @objc(identifyAnonymous:)
+    func identifyAnonymous(identity: [String: Any]) {
+        let name = identity["name"] as? String
+        let email = identity["email"] as? String
+        let ident = Identity.createAnonymous(name: name, email: email)
+        Zendesk.instance?.setIdentity(ident)
+        // let identity = Identity.createAnonymous(name: name, email: email)
+        // Zendesk.instance?.setIdentity(identity)
     }
     
     // MARK: - UI Methods
@@ -64,7 +74,8 @@ class RNZendesk: RCTEventEmitter {
     func showHelpCenter(with options: [String: Any]) {
         DispatchQueue.main.async {
             let hcConfig = HelpCenterUiConfiguration()
-            hcConfig.hideContactSupport = (options["hideContactSupport"] as? Bool) ?? false
+            hcConfig.showContactOptions = !((options["hideContactSupport"] as? Bool) ?? false)
+            // hcConfig.hideContactSupport = (options["hideContactSupport"] as? Bool) ?? false
             let helpCenter = HelpCenterUi.buildHelpCenterOverviewUi(withConfigs: [hcConfig])
             
             let nvc = UINavigationController(rootViewController: helpCenter)

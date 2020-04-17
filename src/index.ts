@@ -21,7 +21,7 @@ export function identifyJWT(token: string) {
 }
 
 export function identifyAnonymous(name?: string, email?: string) {
-  RNZendesk.identifyAnonymous(name, email)
+  RNZendesk.identifyAnonymous({ name, email })
 }
 
 // MARK: - UI Methods
