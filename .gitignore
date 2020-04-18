@@ -65,6 +65,5 @@ package-lock.json
 
 /coverage
 /third-party
-lib/
 
 example
