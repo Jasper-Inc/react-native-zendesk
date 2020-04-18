@@ -40,6 +40,10 @@
   "bugs": {
     "url": "https://github.com/dcvz/react-native-zendesk/issues"
   },
+  "dependencies": {
+    "rimraf": "^2.6.2",
+    "typescript": "^3.2.4"
+  },
   "devDependencies": {
     "@types/react-native": "^0.60.0",
     "@typescript-eslint/eslint-plugin": "^1.7.0",
@@ -47,8 +51,6 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.17.0",
-    "rimraf": "^2.6.2",
-    "typescript": "^3.2.4"
+    "prettier": "^1.17.0"
   }
 }
