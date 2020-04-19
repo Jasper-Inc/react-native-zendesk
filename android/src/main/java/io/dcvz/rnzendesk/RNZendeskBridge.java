@@ -56,8 +56,8 @@ public class RNZendeskBridge extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void identifyAnonymous(ReadableMap identMap) {
-        String name = config.getString("name");
-        String email = config.getString("email");
+        String name = identMap.getString("name");
+        String email = identMap.getString("email");
         Identity identity = new AnonymousIdentity.Builder()
             .withNameIdentifier(name)
             .withEmailIdentifier(email)
